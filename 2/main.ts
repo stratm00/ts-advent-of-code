@@ -17,12 +17,12 @@ fs.readFile("./2/input.txt", (err, data)=>{
         }
     }
 
-    const numberOfSafeReports = reports.filter((rep)=>reportSafe(rep)).length;
+    const numberOfSafeReports = reports.filter((rep)=>isReportSafe(rep)).length;
 
     console.log(`Es gab ${numberOfSafeReports} sichere Reports.`)
 });
 
-function reportSafe(report:ReportData):boolean {
+function isReportSafe(report:ReportData):boolean {
     let monotonous_falling_action = true;
     let monotonous_rising_action = true;
     let action_in_acceptable_deltas = true;
