@@ -1,7 +1,7 @@
 import fs from "node:fs"; 
 
 type ReportData = number[]; 
-const ACCEPTABLE_DELTAS = [1,3];
+const ACCEPTABLE_DELTA_BOUNDS = [1,3];
 
 fs.readFile("./2/input.txt", (err, data)=>{
     if(err){
@@ -41,7 +41,7 @@ function isReportSafe(report:ReportData):boolean {
             }
 
             const abs_delta = Math.abs(delta_nums)
-            action_in_acceptable_deltas = action_in_acceptable_deltas && ( (abs_delta>=ACCEPTABLE_DELTAS[0]) && (abs_delta<=ACCEPTABLE_DELTAS[1]));
+            action_in_acceptable_deltas = action_in_acceptable_deltas && ( (abs_delta>=ACCEPTABLE_DELTA_BOUNDS[0]) && (abs_delta<=ACCEPTABLE_DELTA_BOUNDS[1]));
         }
     }
     
