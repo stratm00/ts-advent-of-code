@@ -17,7 +17,7 @@ fs.readFile("./2/input.txt", (err, data)=>{
         }
     }
 
-    const numberOfSafeReports = reports.map((rep)=>reportSafe(rep)).filter(x=>x).length;
+    const numberOfSafeReports = reports.filter((rep)=>reportSafe(rep)).length;
 
     console.log(`Es gab ${numberOfSafeReports} sichere Reports.`)
 });
