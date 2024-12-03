@@ -20,9 +20,6 @@ fs.readFile("./1/input.txt", (err, data)=> {
 });
 
 function computeListSimilarityScore(left: number[], right: number[]){
-    const sortAsc = (a:number,b:number) => b-a;
-    //Sort ascending (or descending, it matters only that the arrays are numerically sorted)
-    left.sort(sortAsc);
     
     let similarityScore = 0;
     //naive solution, we might prefer a lookup table or Map if this is a commonly recurring computation

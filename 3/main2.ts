@@ -35,7 +35,6 @@ fs.readFile("./3/input.txt", (err, data)=> {
         }
         
     }
-
     
     console.log(`The sum of all valid mul(X,Y) statements is ${sumOfAllEnabledMuls}`);
 });

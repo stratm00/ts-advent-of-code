@@ -13,7 +13,7 @@ fs.readFile("./2/input.txt", (err, data)=>{
 
     for (const reportString of dataString.split("\n")){
         if(reportString!==""){
-            reports.push( reportString.split(" ").map((val)=>Number(val)) );
+            reports.push( reportString.split(" ").map(Number) );
         }
     }
 
@@ -30,7 +30,7 @@ function isReportSafe(report:ReportData):boolean {
         //Don't believe JS Array's indexing lies
         const num_index = Number(index);
         let dampenedReport: ReportData = [];
-        
+
         if(num_index==0){
             dampenedReport = report.slice(1, report.length);
         }else if (num_index==report.length-1){
