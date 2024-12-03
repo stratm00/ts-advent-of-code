@@ -21,14 +21,11 @@ fs.readFile("./1/input.txt", (err, data)=> {
 
 function computeListSimilarityScore(left: number[], right: number[]){
     
-    let similarityScore = 0;
     //naive solution, we might prefer a lookup table or Map if this is a commonly recurring computation
     const _occurencesInRight = (n: number) => right.filter(x=>x==n).length;
-    //Similarity Score for Number n in Left
-
-    for(const leftNumber of left){
-        similarityScore += leftNumber*_occurencesInRight(leftNumber);
-    }
-
-    return similarityScore;
+    
+    return left.map(
+        leftNumber=> leftNumber * _occurencesInRight(leftNumber)
+    ).reduce((a,b)=>a+b
+            ,0);
 }
