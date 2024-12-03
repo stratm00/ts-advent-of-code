@@ -1,5 +1,5 @@
 //Going the naive Route for parsing, using the regex
-const correctlyFormedMulRegex = /mul\((\d*),(\d*)\)/gm;
+const correctlyFormedMulRegex = /mul\((\d+),(\d+)\)/gm;
 
 
 import fs from "node:fs";
