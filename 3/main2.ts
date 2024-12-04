@@ -18,7 +18,7 @@ fs.readFile("./3/input.txt", (err, data)=> {
     let doFlag = true;
     let sumOfAllEnabledMuls = 0;
     for(const expr of matchedExpressions){
-        //expr[0] ^= detected string, the following numerical values are the detected groups
+        //expr[0] ^= detected string, the following indices are the detected groups
         if(expr[1]=="do"){
             //do expression
             doFlag=true;
