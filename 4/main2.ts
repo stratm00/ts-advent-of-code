@@ -21,12 +21,7 @@ fs.readFile("./4/input.txt", (err, data)=> {
 
 
 function timesX_MASFound(grid:string[]): number{
-    //Gehe durch das Gatter
-    //Falls X:
-        //Prüfe vorwärts & rückwärts    
-        //Prüfe vertikal
-        //Prüfe diagonal
-    
+
     let hits=0;
     //Funktion mit Guards, die die Grenzen des Gatters respektieren
     const _charRelativeToPosIs = (position: Vec2n, direction: Vec2n, searchChar:string) => {
@@ -50,7 +45,7 @@ function timesX_MASFound(grid:string[]): number{
     for(let y = 0; y<grid.length; y++){
         const line = grid[y];
         for(let x = 0;x<line.length;x++){
-            //Finde X-MAS
+            //Find X-MAS
             if(line.charAt(x)==="A"){
                 const a_pos:Vec2n = {x:x, y:y};
 
@@ -69,7 +64,6 @@ function timesX_MASFound(grid:string[]): number{
                 
 
             }
-            //Falls A:
 
         }
     }
