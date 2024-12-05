@@ -36,7 +36,7 @@ fs.readFile("./5/input.txt", (err, data)=> {
     const fixedOrders = problemOrders.map((order)=>fixOrder(order, rulesList));
 
     const sumOfMiddlePages = fixedOrders.map((ord)=>ord[Math.floor(ord.length/2)]).reduce((a,b)=>a+b,0);
-    //3911 too low
+    
     console.log(`Sum of middle pages in corrected orders: ${sumOfMiddlePages}`)
 })
 
