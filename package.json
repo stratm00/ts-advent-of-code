@@ -8,7 +8,8 @@
     "day1": "npx tsx 1/main.ts && npx tsx 1/main2.ts",
     "day2": "npx tsx 2/main.ts && npx tsx 2/main2.ts",
     "day3": "npx tsx 3/main.ts && npx tsx 3/main2.ts",
-    "day4": "npx tsx 4/main.ts && npx tsx 4/main2.ts"
+    "day4": "npx tsx 4/main.ts && npx tsx 4/main2.ts",
+    "day5": "npx tsx 5/main.ts && npx tsx 5/main2.ts"
   },
   "author": "",
   "license": "ISC",
