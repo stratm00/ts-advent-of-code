@@ -4,6 +4,7 @@ const GUARD_START_REGEX = /\^/gm;
 
 function add_vec2n(a:Vec2n, b:Vec2n):Vec2n {return {x:a.x+b.x, y:a.y+b.y};}
 type Vec2n = {x:number, y:number};
+type MovementInfo = {pos: Vec2n, dir: Vec2n};
 type Map = string[];
 const ROADBLOCK = '#';
 const MARKED_CHAR = "X"
@@ -96,7 +97,8 @@ function completeWalkaround(map: Map): boolean {
 
     let guardHasNotLeftMap = (guard.x<mapWidth&&guard.x>=0) && (guard.y<mapHeight&&guard.y>=0);
     let guardIsCaughtInLoop = false;
-    // let guardTurningPoints: Vec2n[] = [];
+    
+    let guardTurningPoints: MovementInfo[] = [];
     let guard_steps = 0;
     while(guardHasNotLeftMap && !guardIsCaughtInLoop){
         //mark current Position
@@ -104,13 +106,13 @@ function completeWalkaround(map: Map): boolean {
         //Turn if confronted by obstacle
         while(_checkSolidAhead(guard,orientation)&&!guardIsCaughtInLoop){
             //Mark  recursions
-            // This gives us a higher answer than would be correct.
-            // const alreadyTurnedHere = guardTurningPoints.filter((pos)=>pos.x==guard.x&&pos.y==guard.y).length>0;
-            // if(alreadyTurnedHere)guardIsCaughtInLoop=true;
-
-            if(guard_steps>(mapWidth*mapHeight))guardIsCaughtInLoop=true;
-            orientation = _turnRight(orientation);
-            // guardTurningPoints.push(guard); 
+            // Complex Solution => if the guard has already been at the same spot with the same orientation, we have a loop since orientation and location are determinative of future moves
+            const alreadyTurnedHere = guardTurningPoints.filter((info)=>(info.pos.x==guard.x&&info.pos.y==guard.y)&&(info.dir.x==orientation.x&&info.dir.y==orientation.y)).length>0;
+            if(alreadyTurnedHere)guardIsCaughtInLoop=true;
+            //Naive Solution
+            // if(guard_steps>(mapWidth*mapHeight))guardIsCaughtInLoop=true;
+            guardTurningPoints.push({pos:guard, dir:orientation});
+            orientation = _turnRight(orientation); 
         }
         if(!guardIsCaughtInLoop){
             //walk guard
