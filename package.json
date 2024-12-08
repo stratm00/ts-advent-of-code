@@ -11,7 +11,8 @@
     "day4": "npx tsx 4/main.ts && npx tsx 4/main2.ts",
     "day5": "npx tsx 5/main.ts && npx tsx 5/main2.ts",
     "day6": "npx tsx 6/main.ts && npx tsx 6/main2.ts",
-    "day7": "npx tsx 7/main.ts && npx tsx 7/main2.ts"
+    "day7": "npx tsx 7/main.ts && npx tsx 7/main2.ts",
+    "day8": "npx tsx 8/main.ts && npx tsx 8/main2.ts"
   },
   "author": "",
   "license": "ISC",
