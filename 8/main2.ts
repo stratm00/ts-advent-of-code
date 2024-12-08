@@ -99,7 +99,7 @@ fs.readFile("./8/input.txt", (err, data)=> {
 
     
     totalAntinodes.map(an=>an.point).forEach((pt)=>{
-        if(uniqueLocations.filter(loc=>loc.x == pt.x && loc.y == pt.y).length<1)uniqueLocations.push(pt);
+        if(!uniqueLocations.find(loc=>loc.x == pt.x && loc.y == pt.y))uniqueLocations.push(pt);
     });
     
     console.log(`Respecting resonant harmonics, there are ${uniqueLocations.length} total unique locations of antinodes on map`);

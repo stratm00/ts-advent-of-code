@@ -79,8 +79,8 @@ fs.readFile("./8/input.txt", (err, data)=> {
         for(const stationAhead of siblingStationsAhead){
             const antinodes = _getAntinodes(hit, stationAhead)
             // console.log(JSON.stringify(antinodes))
-            if(totalAntinodes.filter((an)=> JSON.stringify(an)==JSON.stringify(antinodes[0])).length==0 ) totalAntinodes.push(antinodes[0]);
-            if(totalAntinodes.filter((an)=> JSON.stringify(an)==JSON.stringify(antinodes[1])).length==0 ) totalAntinodes.push(antinodes[1]);
+            if(!totalAntinodes.find((an)=> JSON.stringify(an)==JSON.stringify(antinodes[0]))) totalAntinodes.push(antinodes[0]);
+            if(!totalAntinodes.find((an)=> JSON.stringify(an)==JSON.stringify(antinodes[1]))) totalAntinodes.push(antinodes[1]);
         }
     }
 
@@ -91,7 +91,7 @@ fs.readFile("./8/input.txt", (err, data)=> {
     console.log(`=== Antinodes in Bounds (${antinodesInBounds.length}) ===`);
     
     antinodesInBounds.forEach((pt)=>{
-        if(uniqueLocations.filter(loc=>loc.x == pt.x && loc.y == pt.y).length<1)uniqueLocations.push(pt);
+        if(!uniqueLocations.find(loc=>loc.x == pt.x && loc.y == pt.y))uniqueLocations.push(pt);
     });
     
     console.log(`There are ${uniqueLocations.length} total unique locations of antinodes on map`);
