@@ -5,7 +5,7 @@ type InstructionData = number[];
 type Disk = number[];
 type NumberFragment = {number: number, index: number, width: number};
 
-fs.readFile("./9/input.txt", (err, data)=> {
+fs.readFile("./9/input_test.txt", (err, data)=> {
 
     if(err){
         console.error(err);
@@ -119,11 +119,7 @@ function getAllDiskNumbers(d: Disk){
 }
 
 function getDiskChecksum(d: Disk):number{
-    let res = 0;
-    for(let idx = 0;idx<d.length;idx++){
-        if(d[idx]!=EMPTY_SPACE_IDENTIFIER)res += (d[idx]*idx);
-    }
-    return res;
+    return d.map((value:number, index:number)=> {return value!=EMPTY_SPACE_IDENTIFIER ? value * index:0}).reduce((a,b)=>a+b,0);
 }
 
 function printDisk(d: Disk):void {
