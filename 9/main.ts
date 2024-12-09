@@ -91,9 +91,5 @@ function findLastIndexOfNumber(d: Disk):number {
 }
 
 function printDisk(d: Disk):void {
-    let strBuf = "";
-    for(const number of d){
-        strBuf += (number==EMPTY_SPACE_IDENTIFIER)?".":number
-    }
-    console.log(strBuf);
+    console.log(d.map(n=>n==EMPTY_SPACE_IDENTIFIER?".":n).join(""))
 }
