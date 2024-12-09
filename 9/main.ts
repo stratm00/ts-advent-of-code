@@ -4,7 +4,7 @@ type InstructionData = number[];
 type Disk = number[];
 const EMPTY_SPACE_IDENTIFIER = -1
 
-fs.readFile("./9/input_test.txt", (err, data)=> {
+fs.readFile("./9/input.txt", (err, data)=> {
 
     if(err){
         console.error(err);
@@ -12,7 +12,6 @@ fs.readFile("./9/input_test.txt", (err, data)=> {
     }
 
     const readInstructions:InstructionData = data.toString().split("").map(Number);
-    console.log(readInstructions);
     
     let diskBuilt:Disk = constructDisk(readInstructions);
     

@@ -5,7 +5,7 @@ type InstructionData = number[];
 type Disk = number[];
 type NumberFragment = {number: number, index: number, width: number};
 
-fs.readFile("./9/input_test.txt", (err, data)=> {
+fs.readFile("./9/input.txt", (err, data)=> {
 
     if(err){
         console.error(err);
@@ -50,7 +50,6 @@ function compactDisk(d: Disk): Disk{
 
     //identify all numbers that have to be considered
     const allNumbers: number[] = getAllDiskNumbers(disk);
-    console.log(allNumbers)
 
     
     //keep a list of considered numbers
