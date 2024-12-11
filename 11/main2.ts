@@ -8,14 +8,12 @@ fs.readFile("./11/input.txt", (err, data)=> {
         return;
     }
     const inputListOfNumbers: number[] = data.toString().split(" ").map(Number);
-
-    let latestIteration = inputListOfNumbers;
     
     let numbersMap: Map<number, number> = new Map<number, number>();
     inputListOfNumbers.forEach((n)=>incrementInMap(numbersMap, n));   
         
     for(let i = 0;i<ITERATIONS;i++){
-        numbersMap = applyRulesMap(numbersMap);
+        numbersMap = applyRulesToMap(numbersMap);
     }
 
     let totalSumOfValues = 0;
@@ -31,9 +29,9 @@ function incrementInMap(map: Map<number, number>, key:number, by:number =1){
     map.set(key, previousValue+by);
 }
 
-function applyRulesMap(nums: Map<number, number>):Map<number, number> {
+function applyRulesToMap(nums: Map<number, number>):Map<number, number> {
     let newMap = new Map<number, number>();
-
+    
     nums.forEach((occurences, number) => {
         
         if(number == 0){
@@ -49,7 +47,8 @@ function applyRulesMap(nums: Map<number, number>):Map<number, number> {
             incrementInMap(newMap, newNums[1], occurences);
 
         }else incrementInMap(newMap, number * 2024, occurences)
-    })
+
+    });
 
     return newMap;
 }
