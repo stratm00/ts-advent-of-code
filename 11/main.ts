@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 const ITERATIONS = 25;
+
 fs.readFile("./11/input.txt", (err, data)=> {
    
     if(err){
@@ -7,15 +8,14 @@ fs.readFile("./11/input.txt", (err, data)=> {
         return;
     }
     const inputListOfNumbers: number[] = data.toString().split(" ").map(Number);
-    console.log("initial reading:");
-    console.log(inputListOfNumbers.join(" "));
+    
 
     let latestIteration = inputListOfNumbers;
     for(let i = 0;i<ITERATIONS; i++){
         latestIteration = latestIteration.map(applyRules).reduce(arrUnion, []);
     }
 
-    console.log(`Length of final Iteration result: ${latestIteration.length}`);
+    console.log(`Total amount of stones after 25 iterations: ${latestIteration.length}`);
 });
 
 function applyRules(num: number): number[] {
@@ -29,6 +29,5 @@ function applyRules(num: number): number[] {
 function arrUnion<T> (a:T[], b:T[]):T[] {
     
     for(const item of b)a.push(item);
-    return a
-    ;
+    return a;
 }

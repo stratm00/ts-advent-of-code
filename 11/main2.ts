@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-const ITERATIONS = 25;
+const ITERATIONS = 75;
 
 fs.readFile("./11/input.txt", (err, data)=> {
    
@@ -11,26 +11,45 @@ fs.readFile("./11/input.txt", (err, data)=> {
 
     let latestIteration = inputListOfNumbers;
     
-    for(let i = 0;i<ITERATIONS; i++){
-        latestIteration = latestIteration.map(applyRules).reduce(arrUnion, []);
+    let numbersMap: Map<number, number> = new Map<number, number>();
+    inputListOfNumbers.forEach((n)=>incrementInMap(numbersMap, n));   
+        
+    for(let i = 0;i<ITERATIONS;i++){
+        numbersMap = applyRulesMap(numbersMap);
     }
 
-    
+    let totalSumOfValues = 0;
+    for(const value of numbersMap.values()){
+        totalSumOfValues += value;
+    }
+
+    console.log(`Total amount of stones after ${ITERATIONS} iterations: ${totalSumOfValues}`)
 });
 
-function applyRules(num: number): number[] {
-    if (num==0) return [1];
-    if (num.toString().length % 2 == 0){
-        const numString = num.toString();
-        return [numString.substring(0, numString.length/2), numString.substring(numString.length/2)].map(Number);
-    }
-    return [num * 2024];
+function incrementInMap(map: Map<number, number>, key:number, by:number =1){
+    const previousValue = map.get(key) ?? 0;
+    map.set(key, previousValue+by);
 }
 
+function applyRulesMap(nums: Map<number, number>):Map<number, number> {
+    let newMap = new Map<number, number>();
 
+    nums.forEach((occurences, number) => {
+        
+        if(number == 0){
+            
+            incrementInMap(newMap, 1, occurences);
+        
+        }else if(number.toString().length % 2 == 0){
 
-function arrUnion<T> (a:T[], b:T[]):T[] {
-    
-    for(const item of b)a.push(item);
-    return a;
+            const keyString = number.toString();
+            const newNums = [keyString.substring(0, keyString.length/2), keyString.substring(keyString.length/2)].map(Number);
+
+            incrementInMap(newMap, newNums[0], occurences);
+            incrementInMap(newMap, newNums[1], occurences);
+
+        }else incrementInMap(newMap, number * 2024, occurences)
+    })
+
+    return newMap;
 }
