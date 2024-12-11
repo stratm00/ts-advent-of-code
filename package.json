@@ -1,26 +1,26 @@
 {
-  "name": "ts-advent-of-code",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "day1": "npx tsx 1/main.ts && npx tsx 1/main2.ts",
-    "day2": "npx tsx 2/main.ts && npx tsx 2/main2.ts",
-    "day3": "npx tsx 3/main.ts && npx tsx 3/main2.ts",
-    "day4": "npx tsx 4/main.ts && npx tsx 4/main2.ts",
-    "day5": "npx tsx 5/main.ts && npx tsx 5/main2.ts",
-    "day6": "npx tsx 6/main.ts && npx tsx 6/main2.ts",
-    "day7": "npx tsx 7/main.ts && npx tsx 7/main2.ts",
-    "day8": "npx tsx 8/main.ts && npx tsx 8/main2.ts",
-    "day9": "npx tsx 9/main.ts && npx tsx 9/main2.ts",
-    "day10": "npx tsx 10/main.ts && npx tsx 10/main2.ts",
-    "day11": "npx tsx 11/main.ts && npx tsx 11/main2.ts"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^22.10.1",
-    "tsx": "^4.19.2"
-  }
+    "name": "ts-advent-of-code",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "day1": "npx tsx 1/main.ts && npx tsx 1/main2.ts",
+        "day2": "npx tsx 2/main.ts && npx tsx 2/main2.ts",
+        "day3": "npx tsx 3/main.ts && npx tsx 3/main2.ts",
+        "day4": "npx tsx 4/main.ts && npx tsx 4/main2.ts",
+        "day5": "npx tsx 5/main.ts && npx tsx 5/main2.ts",
+        "day6": "npx tsx 6/main.ts && npx tsx 6/main2.ts",
+        "day7": "npx tsx 7/main.ts && npx tsx 7/main2.ts",
+        "day8": "npx tsx 8/main.ts && npx tsx 8/main2.ts",
+        "day9": "npx tsx 9/main.ts && npx tsx 9/main2.ts",
+        "day10": "npx tsx 10/main.ts && npx tsx 10/main2.ts",
+        "day11": "npx tsx 11/main.ts && npx tsx 11/main2.ts"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^22.10.1",
+        "tsx": "^4.19.2"
+    }
 }

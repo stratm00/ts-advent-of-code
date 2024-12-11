@@ -1,8 +1,7 @@
-
 import fs from "node:fs";
 
-fs.readFile("./1/input.txt", (err, data)=> {
-    if(err){
+fs.readFile("./1/input.txt", (err, data) => {
+    if (err) {
         console.error(err);
         return;
     }
@@ -10,7 +9,7 @@ fs.readFile("./1/input.txt", (err, data)=> {
     const left: number[] = [];
     const right: number[] = [];
     const contents = data.toString();
-    contents.split("\n").forEach((line)=>{
+    contents.split("\n").forEach((line) => {
         const splitLine = line.split("   ");
         left.push(Number(splitLine[0]));
         right.push(Number(splitLine[1]));
@@ -19,13 +18,12 @@ fs.readFile("./1/input.txt", (err, data)=> {
     console.log(`Der Ähnlichkeitswert zwischen links und rechts ist ${result}`);
 });
 
-function computeListSimilarityScore(left: number[], right: number[]){
-    
+function computeListSimilarityScore(left: number[], right: number[]) {
     //naive solution, we might prefer a lookup table or Map if this is a commonly recurring computation
-    const _occurencesInRight = (n: number) => right.filter(x=>x==n).length;
-    
+    const _occurencesInRight = (n: number) =>
+        right.filter((x) => x == n).length;
+
     return left.map(
-        leftNumber=> leftNumber * _occurencesInRight(leftNumber)
-    ).reduce((a,b)=>a+b
-            ,0);
+        (leftNumber) => leftNumber * _occurencesInRight(leftNumber),
+    ).reduce((a, b) => a + b, 0);
 }

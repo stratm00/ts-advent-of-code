@@ -1,8 +1,7 @@
-
 import fs from "node:fs";
 
-fs.readFile("./1/input.txt", (err, data)=> {
-    if(err){
+fs.readFile("./1/input.txt", (err, data) => {
+    if (err) {
         console.error(err);
         return;
     }
@@ -10,7 +9,7 @@ fs.readFile("./1/input.txt", (err, data)=> {
     const left: number[] = [];
     const right: number[] = [];
     const contents = data.toString();
-    contents.split("\n").forEach((line)=>{
+    contents.split("\n").forEach((line) => {
         const splitLine = line.split("   ");
         left.push(Number(splitLine[0]));
         right.push(Number(splitLine[1]));
@@ -19,18 +18,17 @@ fs.readFile("./1/input.txt", (err, data)=> {
     console.log(`Das Ergebnis ist ${result}`);
 });
 
-function computeSumOfListDiffs(left: number[], right: number[]){
-    const sortAsc = (a:number,b:number) => b-a;
+function computeSumOfListDiffs(left: number[], right: number[]) {
+    const sortAsc = (a: number, b: number) => b - a;
     //Sort ascending (or descending, it matters only that the arrays are numerically sorted)
     left.sort(sortAsc);
-    right.sort(sortAsc)
+    right.sort(sortAsc);
     //add up distances between left[n] and right[n]
     let sumOfDifferences = 0;
-    
-    for (const index in left){
-        sumOfDifferences += Math.abs((left[index]-right[index]));
-    }
 
+    for (const index in left) {
+        sumOfDifferences += Math.abs(left[index] - right[index]);
+    }
 
     return sumOfDifferences;
 }
