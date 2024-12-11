@@ -25,10 +25,10 @@ fs.readFile("./9/input.txt", (err, data)=> {
 });
 
 function constructDisk(readInstructions: InstructionData): Disk {
-    let disk: Disk = [];
+    const disk: Disk = [];
     let switchEmpty = false;
     let currentID = 0;
-    for(let instruction of readInstructions){
+    for(const instruction of readInstructions){
         
         for(let i =0;i<instruction;i++){
             disk.push(
@@ -45,7 +45,7 @@ function constructDisk(readInstructions: InstructionData): Disk {
 }
 
 function compactDisk(d: Disk): Disk{
-    let disk = d.slice();
+    const disk = d.slice();
 
 
     //identify all numbers that have to be considered
@@ -53,13 +53,13 @@ function compactDisk(d: Disk): Disk{
 
     
     //keep a list of considered numbers
-    let consideredNumbers: number[] = [];
+    const consideredNumbers: number[] = [];
     // printDisk(disk);
 
 
     while(consideredNumbers.length != allNumbers.length){
         //map all empty spaces
-        let consideredEmptySpaces: NumberFragment[] = [];
+        const consideredEmptySpaces: NumberFragment[] = [];
         for(let i = 0; i<disk.length;i++){
             // conditions for this: nf.index>=1<nf.index+nf.width
             if(disk[i]==EMPTY_SPACE_IDENTIFIER && !consideredEmptySpaces.find((nf)=>nf.index<=i&&nf.index+nf.width>i)){
@@ -89,7 +89,7 @@ function compactDisk(d: Disk): Disk{
         
         
         //see if it can be moved ahead
-        let emptySpaceFit = consideredEmptySpaces.find((nf) => nf.width>=numberWidth && nf.index<lastNumberIndex);
+        const emptySpaceFit = consideredEmptySpaces.find((nf) => nf.width>=numberWidth && nf.index<lastNumberIndex);
         if(emptySpaceFit !== undefined){
             
             for(let offset=0;offset<numberWidth;offset++){
@@ -110,7 +110,7 @@ function compactDisk(d: Disk): Disk{
 }
 
 function getAllDiskNumbers(d: Disk){
-    let baseList: number[] = [];
+    const baseList: number[] = [];
     d.forEach((n)=>{
         if(!(n==EMPTY_SPACE_IDENTIFIER||baseList.includes(n)))baseList.push(n);
     });
@@ -119,8 +119,4 @@ function getAllDiskNumbers(d: Disk){
 
 function getDiskChecksum(d: Disk):number{
     return d.map((value:number, index:number)=> {return value!=EMPTY_SPACE_IDENTIFIER ? value * index:0}).reduce((a,b)=>a+b,0);
-}
-
-function printDisk(d: Disk):void {
-    console.log(d.map(n=>n==EMPTY_SPACE_IDENTIFIER?".":n).join(""))
 }

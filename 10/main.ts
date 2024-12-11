@@ -35,7 +35,7 @@ fs.readFile("./10/input.txt", (err, data)=> {
             return [pos];
         }
         
-        let ourSummits: Vec2n[] = [];
+        const ourSummits: Vec2n[] = [];
         const posRight = vec2n_add(pos, {x:1, y:0});
         const posLeft = vec2n_add(pos, {x:-1, y:0});
         const posUp = vec2n_add(pos, {x:0, y:-1});
@@ -50,7 +50,7 @@ fs.readFile("./10/input.txt", (err, data)=> {
     }
 
     const _getUniqueList = (setOfObjs: Vec2n[]): Vec2n[] => {
-        let list: Vec2n[] = [];
+        const list: Vec2n[] = [];
         
         setOfObjs.forEach(pos => {
             if(!list.find((p)=>p.x==pos.x&&p.y==pos.y)) list.push(pos);

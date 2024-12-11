@@ -30,7 +30,7 @@ function incrementInMap(map: Map<number, number>, key:number, by:number =1){
 }
 
 function applyRulesToMap(nums: Map<number, number>):Map<number, number> {
-    let newMap = new Map<number, number>();
+    const newMap = new Map<number, number>();
     
     nums.forEach((occurences, number) => {
         

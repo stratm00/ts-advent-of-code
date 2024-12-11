@@ -1,9 +1,5 @@
 import fs from 'node:fs';
 
-const GUARD_START_REGEX = /\^/gm;
-
-
-
 function add_vec2n(a:Vec2n, b:Vec2n):Vec2n {return {x:a.x+b.x, y:a.y+b.y};}
 type Vec2n = {x:number, y:number};
 type Map = string[];
@@ -16,10 +12,10 @@ fs.readFile("./6/input.txt", (err, data)=> {
         return;
     }
     
-    let map: Map = data.toString().split("\r\n")
+    const map: Map = data.toString().split("\r\n")
     completeWalkaround(map);
 
-    let visitedPlaces = map.map((row)=>[...row.matchAll(MARKED_REGEX)].length).reduce((a,b)=>a+b,0);
+    const visitedPlaces = map.map((row)=>[...row.matchAll(MARKED_REGEX)].length).reduce((a,b)=>a+b,0);
     console.log(`The guard visits ${visitedPlaces} spots.`)
 })
 
@@ -65,7 +61,7 @@ function completeWalkaround(map: Map): void {
     let orientation = {x:0,y:-1};
 
     for(let i = 0;i<map.length;i++){
-        let match = map[i].indexOf("^")
+        const match = map[i].indexOf("^")
         if(match !== -1){
             [guard.x, guard.y] = [match, i];
             break;

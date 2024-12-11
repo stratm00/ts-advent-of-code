@@ -8,7 +8,7 @@ fs.readFile("./2/input.txt", (err, data)=>{
         console.error(err);
         return;
     }
-    let reports: ReportData[] = [];
+    const reports: ReportData[] = [];
     const dataString = data.toString();
 
     for (const reportString of dataString.split("\n")){
@@ -28,11 +28,11 @@ function isReportSafe(report:ReportData):boolean {
     let action_in_acceptable_deltas = true;
 
     //Naive solution
-    for(let index in report){
+    for(const index in report){
         //JS Array indices are Strings, fun things happen when you use expressions like index+1
         const num_index = Number(index)
         if(num_index< report.length-1){
-            let delta_nums = report[num_index]-report[num_index+1];
+            const delta_nums = report[num_index]-report[num_index+1];
 
             if(delta_nums<0){
                 monotonous_falling_action = false;

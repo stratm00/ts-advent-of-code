@@ -24,10 +24,10 @@ fs.readFile("./9/input.txt", (err, data)=> {
 });
 
 function constructDisk(readInstructions: InstructionData): Disk {
-    let disk: Disk = [];
+    const disk: Disk = [];
     let switchEmpty = false;
     let currentID = 0;
-    for(let instruction of readInstructions){
+    for(const instruction of readInstructions){
         
         for(let i =0;i<instruction;i++){
             disk.push(
@@ -85,6 +85,3 @@ function findLastIndexOfNumber(d: Disk):number {
     
 }
 
-function printDisk(d: Disk):void {
-    console.log(d.map(n=>n==EMPTY_SPACE_IDENTIFIER?".":n).join(""))
-}

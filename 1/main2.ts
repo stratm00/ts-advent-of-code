@@ -7,8 +7,8 @@ fs.readFile("./1/input.txt", (err, data)=> {
         return;
     }
 
-    let left: number[] = [];
-    let right: number[] = [];
+    const left: number[] = [];
+    const right: number[] = [];
     const contents = data.toString();
     contents.split("\n").forEach((line)=>{
         const splitLine = line.split("   ");

@@ -31,21 +31,17 @@ fs.readFile("./8/input.txt", (err, data)=> {
     // console.log([mapHeight, mapWidth])
     
     const _isInBounds = (point: Vec2n): boolean => {
-        let res = (point.x>=0 && point.x<mapWidth) && (point.y>=0 && point.y<mapHeight);
-        // console.log(`CHECKING ${JSON.stringify(point)} - ${res}`)
-        return res;
+        return (point.x>=0 && point.x<mapWidth) && (point.y>=0 && point.y<mapHeight);;
     }
 
-    const _isOccupied = (stations: Hit[], point: Vec2n):boolean => {
-        return stations.filter((st)=> (st.point.x==point.x) && (st.point.y==point.y)).length>0;
-    }
+    
 
     const _matchToHit = (arr: RegExpExecArray): Hit => {
         return {idx: arr["index"], identifier: arr[1], point: _indexToPoint(arr["index"])}
     }
     
     const _indexToPoint = (idx: number): Vec2n => {
-        let xOff = idx % mapWidth;
+        const xOff = idx % mapWidth;
         return {x: xOff, y: (idx - xOff)/mapWidth};
     }
     
@@ -59,10 +55,10 @@ fs.readFile("./8/input.txt", (err, data)=> {
         ];
     }
 
-    let totalAntinodes: Hit[] = [];
+    const totalAntinodes: Hit[] = [];
     //We get off axis if we don't tear away all the whitespace 
-    let mapStringWithoutLinebreaks = mapString.replaceAll("\r\n","");
-    let stationHits = [...mapStringWithoutLinebreaks.matchAll(STATION_CAPTURE_REGEX)].map(_matchToHit);
+    const mapStringWithoutLinebreaks = mapString.replaceAll("\r\n","");
+    const stationHits = [...mapStringWithoutLinebreaks.matchAll(STATION_CAPTURE_REGEX)].map(_matchToHit);
     
     //  Detect Signal
     //  Find sibling signals ahead
@@ -85,7 +81,7 @@ fs.readFile("./8/input.txt", (err, data)=> {
     }
 
     console.log(`\n=== Antinodes (${totalAntinodes.length}) ===`); 
-    let uniqueLocations: Vec2n[] = [];
+    const uniqueLocations: Vec2n[] = [];
     
     const antinodesInBounds = totalAntinodes.map(an=>an.point).filter(_isInBounds);
     console.log(`=== Antinodes in Bounds (${antinodesInBounds.length}) ===`);

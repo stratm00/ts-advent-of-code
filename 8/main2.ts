@@ -30,10 +30,9 @@ fs.readFile("./8/input.txt", (err, data)=> {
     const [mapHeight, mapWidth] = [readMap.length, readMap[0].length];
     // console.log([mapHeight, mapWidth])
     
-    const _isInBounds = (point: Vec2n): boolean => {
-        let res = (point.x>=0 && point.x<mapWidth) && (point.y>=0 && point.y<mapHeight);
+    const _isInBounds = (point: Vec2n): boolean => { 
         // console.log(`CHECKING ${JSON.stringify(point)} - ${res}`)
-        return res;
+        return (point.x>=0 && point.x<mapWidth) && (point.y>=0 && point.y<mapHeight);
     }
 
 
@@ -42,13 +41,13 @@ fs.readFile("./8/input.txt", (err, data)=> {
     }
     
     const _indexToPoint = (idx: number): Vec2n => {
-        let xOff = idx % mapWidth;
+        const xOff = idx % mapWidth;
         return {x: xOff, y: (idx - xOff)/mapWidth};
     }
     
     const _getAntinodes = (s1: Hit, s2: Hit): Hit[]=>{
         if(s1.idx==-1||s2.idx==-1)return [];
-        let antinodeArray: Hit[] = [];
+        const antinodeArray: Hit[] = [];
         const vectorDiff = vec2n_sub(s2.point, s1.point)
         
 
@@ -68,10 +67,10 @@ fs.readFile("./8/input.txt", (err, data)=> {
         return antinodeArray;
     }
 
-    let totalAntinodes: Hit[] = [];
+    const totalAntinodes: Hit[] = [];
     //We get off axis if we don't tear away all the whitespace 
-    let mapStringWithoutLinebreaks = mapString.replaceAll("\r\n","");
-    let stationHits = [...mapStringWithoutLinebreaks.matchAll(STATION_CAPTURE_REGEX)].map(_matchToHit);
+    const mapStringWithoutLinebreaks = mapString.replaceAll("\r\n","");
+    const stationHits = [...mapStringWithoutLinebreaks.matchAll(STATION_CAPTURE_REGEX)].map(_matchToHit);
     
     //  Detect Signal
     //  Find sibling signals ahead
@@ -95,7 +94,7 @@ fs.readFile("./8/input.txt", (err, data)=> {
     }
 
     console.log(`\n=== Antinodes (${totalAntinodes.length}) ===\n`); 
-    let uniqueLocations: Vec2n[] = [];
+    const uniqueLocations: Vec2n[] = [];
 
     
     totalAntinodes.map(an=>an.point).forEach((pt)=>{

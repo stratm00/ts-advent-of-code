@@ -43,13 +43,13 @@ fs.readFile("./5/input.txt", (err, data)=> {
 function orderViolatesRules(order:PrintOrder, rules:RuleStatement[]):boolean {
     const applicableRules = _getApplicableRules(order, rules);
 
-    let printedPages: number[] = [];
+    const printedPages: number[] = [];
     let ruleWasViolated = false;
     order.forEach((page)=>{
         const prereqsForPage = applicableRules.filter((rule)=>rule.out==page);
         
         //page can be printed if there are no prereq rules, or all requisites in the rule have already been printed
-        let pagePrintable = prereqsForPage.reduce((prev, rule) => prev && printedPages.includes(rule.req), true);
+        const pagePrintable = prereqsForPage.reduce((prev, rule) => prev && printedPages.includes(rule.req), true);
         if(pagePrintable){
             printedPages.push(page)
         }else{
@@ -74,7 +74,7 @@ function fixOrder(order:PrintOrder, rules:RuleStatement[]):PrintOrder {
              if(applicableRules.includes({out:order[n], req:order[n+1]})){ */
             if(applicableRules.find((rule)=>rule.out==order[n]&&rule.req==order[n+1])){
                 //Swap order_n and order_n+1 and recheck
-                let swap = order[n];
+                const swap = order[n];
                 order[n] = order[n+1];
                 order[n+1] = swap;
                 changed=true;

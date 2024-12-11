@@ -1,6 +1,5 @@
 import fs from 'node:fs';
 
-const GUARD_START_REGEX = /\^/gm;
 
 function add_vec2n(a:Vec2n, b:Vec2n):Vec2n {return {x:a.x+b.x, y:a.y+b.y};}
 type Vec2n = {x:number, y:number};
@@ -8,7 +7,7 @@ type MovementInfo = {pos: Vec2n, dir: Vec2n};
 type Map = string[];
 const ROADBLOCK = '#';
 const MARKED_CHAR = "X"
-const MARKED_REGEX = /X/gm;
+
 
 fs.readFile("./6/input.txt", (err, data)=> {
     if(err){
@@ -28,7 +27,7 @@ fs.readFile("./6/input.txt", (err, data)=> {
 
     
     for(let i = 0; i<mapHeight*mapWidth;i++){
-        let localMap = data.toString().split("\r\n");
+        const localMap = data.toString().split("\r\n");
         //Find our point of change iteratively
         const pointCoords:Vec2n = {x:i%mapWidth, y:Math.floor(i/mapWidth)};
         
@@ -98,7 +97,7 @@ function completeWalkaround(map: Map): boolean {
     let guardHasNotLeftMap = (guard.x<mapWidth&&guard.x>=0) && (guard.y<mapHeight&&guard.y>=0);
     let guardIsCaughtInLoop = false;
     
-    let guardTurningPoints: MovementInfo[] = [];
+    const guardTurningPoints: MovementInfo[] = [];
     let guard_steps = 0;
     while(guardHasNotLeftMap && !guardIsCaughtInLoop){
         //mark current Position

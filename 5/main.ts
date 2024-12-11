@@ -45,13 +45,13 @@ function getPrintableOrder(order:PrintOrder, rules:RuleStatement[]): number[] | 
         return order.includes(rule.req) && order.includes(rule.out)
     });
 
-    let printedPages: number[] = [];
+    const printedPages: number[] = [];
     let ruleWasViolated = false;
     order.forEach((page)=>{
         const prereqsForPage = applicableRules.filter((rule)=>rule.out==page);
         
         //page can be printed if there are no prereq rules, or all requisites in the rule have already been printed
-        let pagePrintable = prereqsForPage.reduce((prev, rule) => prev && printedPages.includes(rule.req), true);
+        const pagePrintable = prereqsForPage.reduce((prev, rule) => prev && printedPages.includes(rule.req), true);
         if(pagePrintable){
             printedPages.push(page)
         }else{
