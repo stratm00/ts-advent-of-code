@@ -17,7 +17,8 @@
         "day10": "npx tsx 10/main.ts && npx tsx 10/main2.ts",
         "day11": "npx tsx 11/main.ts && npx tsx 11/main2.ts",
         "day12": "npx tsx 12/main.ts && npx tsx 12/main2.ts",
-        "day13": "npx tsx 13/main.ts && npx tsx 13/main2.ts"
+        "day13": "npx tsx 13/main.ts && npx tsx 13/main2.ts",
+        "day14": "npx tsx 14/main.ts && deno run 14/main2.ts"
     },
     "author": "",
     "license": "ISC",
