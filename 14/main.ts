@@ -26,12 +26,11 @@ fs.readFile(load_file, (err, data) => {
     let guards = [...data.toString().matchAll(GUARD_CAPTURE_REGEX)].map((arr) =>
         captureGuardData(arr.groups)
     );
-    console.log(guards);
+
     //Simulate x steps
     for (let x = 0; x < NUM_STEPS; x++) {
         guards = guards.map(stepGuard);
     }
-    console.log(guards);
 
     const _inQuadrantNW = (position: Vec2n): boolean => {
         return (position.x >= 0 &&
