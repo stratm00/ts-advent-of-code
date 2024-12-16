@@ -59,7 +59,7 @@ fs.readFile(load_file, (err, data) => {
             (position.y >= Math.ceil(SPACE_DIMENSIONS[1] / 2) &&
                 position.y < SPACE_DIMENSIONS[1]);
     };
-    //Find the numbers of guards in each quadrant
+    //Find the number of guards in each quadrant
     const inNWQuadrant = guards.filter((g) => _inQuadrantNW(g.position)).length;
     const inNEQuadrant = guards.filter((g) => _inQuadrantNE(g.position)).length;
     const inSEQuadrant = guards.filter((g) => _inQuadrantSE(g.position)).length;
