@@ -1,6 +1,4 @@
 import fs from "node:fs";
-import readline from "node:readline/promises";
-import process from "node:process";
 const IS_TESTING = false;
 const GUARD_CAPTURE_REGEX =
     /p=(?<px>-?\d+),(?<py>-?\d+) v=(?<vx>-?\d+),(?<vy>-?\d+)/gm;
@@ -18,7 +16,7 @@ function captureGuardData(
 const load_file = IS_TESTING ? "./14/input_test.txt" : "./14/input.txt";
 const SPACE_DIMENSIONS = IS_TESTING ? [11, 7] : [101, 103];
 
-fs.readFile(load_file, async (err, data) => {
+fs.readFile(load_file, (err, data) => {
     if (err) {
         console.error(err);
         return;
@@ -35,7 +33,7 @@ fs.readFile(load_file, async (err, data) => {
     while (!breakLoop) {
         guards = guards.map(stepGuard);
         steps++;
-        let found = searchForTree(guards);
+        const found = searchForTree(guards);
         if (found) breakLoop = true;
     }
     printGuardMap(guards);
